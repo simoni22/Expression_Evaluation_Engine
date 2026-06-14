@@ -1,7 +1,5 @@
 # Design answer — "my expressions always evaluate to 0"
 
-## What's almost certainly going on
-
 "Always 0" is the classic signature of **silent defaulting**. In many expression
 engines a misspelled or missing variable (`reveue` instead of `revenue`), a null
 upstream value, or a type mismatch is quietly coerced to `0`/empty rather than
@@ -9,7 +7,7 @@ failing. The scientist's expression is *correct*; the engine is hiding the real
 problem — a missing, null, or mistyped input — behind a plausible-looking number,
 and gives them no signal pointing at the cause.
 
-Our engine already blocks the worst version of this: undefined names and null
+The engine already blocks the worst version of this: undefined names and null
 arithmetic raise instead of defaulting. But "*that* it broke" isn't "*why*," and
 a raw error mid-pipeline is still a poor experience for a non-engineer running
 thousands of expressions.
